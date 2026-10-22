@@ -1,0 +1,23 @@
+{
+  "name": "gestion-notes",
+  "version": "1.0.0",
+  "description": "Projet 1 : Gestion des notes (Etudiant, Matière, Notes, bulletin, classement, statistiques)",
+  "private": true,
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "init-db": "node server/init-db.js",
+    "seed": "node server/init-db.js --seed",
+    "build:cpp": "g++ -O2 -std=c++17 -o cpp/calcul cpp/calcul.cpp",
+    "test": "node server/selftest.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.11.0",
+    "pdfkit": "^0.15.0"
+  }
+}

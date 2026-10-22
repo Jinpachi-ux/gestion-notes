@@ -1,0 +1,70 @@
+=====================================================
+  PROJET 1 : GESTION DES NOTES  -  GUIDE D'INSTALLATION
+=====================================================
+
+Application web : étudiants, matières, notes, bulletin, classement,
+statistiques (histogramme / camembert) et export PDF.
+Technologies : HTML/CSS/JS, Node.js, MySQL (WampServer), module C++ facultatif.
+
+-----------------------------------------------------
+ AVANT DE COMMENCER : il faut 2 programmes
+-----------------------------------------------------
+1) WampServer  (fournit MySQL)
+   -> Lancez-le et attendez que l'icône en bas à droite soit VERTE.
+
+2) Node.js version 18 ou plus  (https://nodejs.org, version "LTS")
+   -> Pour vérifier : ouvrez "cmd", tapez  node -v  puis Entrée.
+      Si un numéro s'affiche (v18, v20...), c'est bon.
+
+-----------------------------------------------------
+ INSTALLATION (à faire une seule fois)
+-----------------------------------------------------
+ETAPE 1. EXTRAIRE LE ZIP
+   Clic droit sur gestion-notes.zip > "Extraire tout..." > Extraire.
+   (Ne travaillez PAS depuis l'intérieur du zip.)
+
+ETAPE 2. OUVRIR UN TERMINAL DANS LE DOSSIER
+   Ouvrez le dossier "gestion-notes" (celui qui contient package.json).
+   Cliquez dans la barre d'adresse de l'Explorateur, tapez  cmd  puis Entrée.
+
+ETAPE 3. INSTALLER LES DEPENDANCES (internet nécessaire)
+   npm install
+
+ETAPE 4. CREER LE FICHIER DE CONFIGURATION
+   copy .env.example .env
+   (Si votre MySQL a un mot de passe, ouvrez .env avec le Bloc-notes
+    et écrivez-le après DB_PASSWORD=)
+
+ETAPE 5. CREER LA BASE DE DONNEES
+   npm run init-db        -> doit afficher "OK : schema.sql"
+   npm run seed           -> données de démonstration (facultatif)
+
+-----------------------------------------------------
+ LANCEMENT (à chaque utilisation)
+-----------------------------------------------------
+1. Démarrer WampServer (icône verte).
+2. Ouvrir un terminal dans le dossier du projet (étape 2 ci-dessus).
+3. Taper :  npm start
+4. Ouvrir dans le navigateur :  http://localhost:3000
+5. Ne pas fermer la fenêtre noire. Pour arrêter : Ctrl + C
+
+-----------------------------------------------------
+ EN CAS DE PROBLEME
+-----------------------------------------------------
+"npm n'est pas reconnu"        -> Node.js n'est pas installé, ou rouvrez cmd.
+"ECONNREFUSED" / "Échec"       -> WampServer n'est pas vert : attendez ou
+                                  redémarrez les services.
+"Access denied"                -> mettez le mot de passe MySQL dans .env
+"Cannot find module"           -> refaites "npm install" dans le bon dossier.
+La page ne s'ouvre pas         -> vérifiez que la fenêtre noire est ouverte ;
+                                  ou changez PORT=3001 dans .env et relancez.
+Erreur de port MySQL           -> vérifiez DB_PORT dans .env (3306 par défaut,
+                                  parfois 3307 si un autre MySQL est installé).
+
+-----------------------------------------------------
+ FACULTATIF : module C++
+-----------------------------------------------------
+Si g++ est installé :  npm run build:cpp   puis   npm test
+Sinon, ignorez : l'application utilise automatiquement la version JavaScript.
+
+Plus de détails (API, structure, correspondance avec le sujet) : README.md
